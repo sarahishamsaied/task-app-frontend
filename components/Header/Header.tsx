@@ -19,7 +19,16 @@ const Header = (props: Props) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.header} onPress={handleHomePress}>
+      <TouchableOpacity
+        style={styles.header}
+        onPress={
+          isAuthorized
+            ? handleHomePress
+            : () => {
+                router.push("/");
+              }
+        }
+      >
         <Image
           style={styles.logo}
           source={require("../../assets/images/logo-white.png")}

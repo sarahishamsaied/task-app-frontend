@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { Feather, AntDesign } from "@expo/vector-icons";
 import Button from "@/components/Button/Button";
 import moment from "moment";
-import { TaskWithId } from "@/Types/Task";
+import { TaskWithId } from "@/interfaces/Task";
 import { Ionicons } from "@expo/vector-icons";
 import { priorityColor } from "@/constants/Colors";
 

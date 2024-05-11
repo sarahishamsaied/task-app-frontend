@@ -46,8 +46,6 @@ const Task = ({
   };
 
   const colorTaskBasedOnPriority = (priority: "LOW" | "MEDIUM" | "HIGH") => {
-    console.log("priority is", priorityColor[priority]);
-
     return priorityColor[priority];
   };
 

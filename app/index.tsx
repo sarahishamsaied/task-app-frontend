@@ -48,7 +48,7 @@ const Login = (props: Props) => {
         }
       }
     } catch (error: any) {
-      console.log(error);
+      console.log("err is", error);
       setError(
         error.data ? error.data.message : "An error occurred during login."
       );

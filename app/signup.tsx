@@ -65,10 +65,11 @@ const SignUp = (props: Props) => {
             onBlur={onBlur}
             onChange={(value) => onChange(value)}
             value={value}
-            placeholder="FirstName"
+            placeholder="First Name"
             type="text"
             size="lg"
             label="First Name"
+            error={errors.firstName?.message as string}
           />
         )}
         name="firstName"
@@ -85,7 +86,8 @@ const SignUp = (props: Props) => {
             placeholder="Last Name"
             type="text"
             size="lg"
-            label="LastName"
+            label="Last Name"
+            error={errors.lastName?.message as string}
           />
         )}
         name="lastName"
@@ -104,6 +106,7 @@ const SignUp = (props: Props) => {
             type="email"
             size="lg"
             label="Email"
+            error={errors.email?.message as string}
           />
         )}
         name="email"
@@ -121,6 +124,7 @@ const SignUp = (props: Props) => {
             type="password"
             size="lg"
             label="Password"
+            error={errors.password?.message as string}
           />
         )}
         name="password"
@@ -138,6 +142,7 @@ const SignUp = (props: Props) => {
             type="password"
             size="lg"
             label="Confirm Password"
+            error={errors.confirmPassword?.message as string}
           />
         )}
         name="confirmPassword"
@@ -160,7 +165,7 @@ const SignUp = (props: Props) => {
         <Text>Sign Up</Text>
       </Button>
       {
-        <Text style={styles.link} onPress={() => router.replace("/login")}>
+        <Text style={styles.link} onPress={() => router.replace("/")}>
           Already have an account?
         </Text>
       }

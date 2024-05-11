@@ -1,3 +1,4 @@
+import { RootState } from "@/store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Platform } from "react-native";
@@ -12,9 +13,9 @@ export const api = createApi({
   tagTypes: ["Tasks", "User"],
   baseQuery: fetchBaseQuery({
     baseUrl,
-    prepareHeaders: async (headers) => {
-      const token = await AsyncStorage.getItem("token");
-      const user = await AsyncStorage.getItem("user");
+    prepareHeaders: async (headers, { getState }) => {
+      const token = (getState() as RootState).user.token;
+      console.log("heeey", token);
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }

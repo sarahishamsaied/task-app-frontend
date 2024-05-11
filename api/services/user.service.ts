@@ -1,7 +1,10 @@
 import { store } from "@/store";
 import { api } from "../api.config";
+
 import JWT from "expo-jwt";
+
 import { setCredentials } from "@/features/slices/userSlice";
+import { ACCESS_TOKEN_SECRET } from "@/config/config";
 
 export const userApi = api.injectEndpoints({
   endpoints: (builder) => ({
@@ -20,7 +23,7 @@ export const userApi = api.injectEndpoints({
       }),
       transformResponse: (response: { token: string }) => {
         try {
-          const decoded = JWT.decode(response.token, "access_token", {
+          const decoded = JWT.decode(response.token, ACCESS_TOKEN_SECRET, {
             timeSkew: 30,
           });
           store.dispatch(
@@ -30,6 +33,7 @@ export const userApi = api.injectEndpoints({
               isLoggedIn: true,
             })
           );
+          console.log("decoded", decoded);
           return { token: response.token, user: decoded };
         } catch (error) {
           console.error("Failed to decode token:", error);

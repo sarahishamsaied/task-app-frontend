@@ -57,10 +57,19 @@ const AddTask = (props: Props) => {
   };
 
   const onAddTask = async (formData: any) => {
+    if (moment(formData.startDate).isAfter(formData.endDate)) {
+      [formData.startDate, formData.endDate] = [
+        formData.endDate,
+        formData.startDate,
+      ];
+    }
     const task = await getTaskData(formData);
+    console.log;
     console.log("task is", task);
     if (!task) return;
     try {
+      console.log("wrong");
+
       await createTask(task).unwrap();
       props.refetch && props.refetch();
     } catch (error: any) {
@@ -69,6 +78,12 @@ const AddTask = (props: Props) => {
   };
 
   const onEditTask = async (formData: any) => {
+    if (moment(formData.startDate).isAfter(formData.endDate)) {
+      [formData.startDate, formData.endDate] = [
+        formData.endDate,
+        formData.startDate,
+      ];
+    }
     const task = await getTaskData(formData);
     console.log("task is", task);
     if (!task) return;

@@ -8,9 +8,15 @@ type Props = {
   label: string;
   initialDateTime: Date;
   onChange: (dateTime: moment.Moment) => void;
+  error?: string;
 };
 
-const DateTimeSelector = ({ label, initialDateTime, onChange }: Props) => {
+const DateTimeSelector = ({
+  label,
+  initialDateTime,
+  onChange,
+  error,
+}: Props) => {
   const [dateTime, setDateTime] = useState(moment(initialDateTime));
   const [pickerVisible, setPickerVisible] = useState<string | null>(null);
 
@@ -67,6 +73,7 @@ const DateTimeSelector = ({ label, initialDateTime, onChange }: Props) => {
           }}
         />
       )}
+      {error && <Text style={styles.error}>{error}</Text>}
     </View>
   );
 };

@@ -73,6 +73,17 @@ const Input = (props: Props) => {
           }}
         />
       )}
+      {props.error && (
+        <Text
+          style={{
+            color: "#ff4343",
+            fontSize: 12,
+            marginTop: 5,
+          }}
+        >
+          {props.error}
+        </Text>
+      )}
     </View>
   );
 };

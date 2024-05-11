@@ -14,10 +14,11 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import moment, { Moment } from "moment";
 import AddTask from "@/components/AddTask/AddTask";
 import { useGetTasksQuery } from "@/api/services/task.service";
-import type { Task as TaskType, TaskWithId } from "@/Types/Task";
+import type { Task as TaskType, TaskWithId } from "@/interfaces/Task";
 import TaskActions from "@/components/TaskActions/TaskActions";
 import CustomModal from "@/components/Modal/Modal";
 import DeleteTaskConfirmation from "@/components/DeleteTaskConfirmation/DeleteTaskConfirmation";
+
 type Props = {};
 
 const Home = (props: Props) => {
